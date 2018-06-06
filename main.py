@@ -2,9 +2,16 @@
 import sys
 import requests
 
+"""
+SansanとHubSpotのAPIを利用した連携のサンプルコードです。
+
+各々のサービスよりAPIキーを取得し、下記に設定の上ご利用ください。
+"""
 sansan_api_key = '{your_sansan_api_key}'
 hubspot_api_key = '{your_hubspot_api_key}'
 
+
+# SansanのAPIを利用して名刺データを取得します
 def get_cards():
     url = 'https://api.sansan.com/v1.2/bizCards/'
     headers = { 'X-Sansan-Api-Key' : sansan_api_key }
@@ -16,6 +23,7 @@ def get_cards():
     return r.json().get('data', [])
 
 
+# HubSpotのAPIを利用してコンタクトデータを作成または更新します
 def sync_to_hubspot(email, record):
     url = f"https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/{email}/?hapikey={hubspot_api_key}"
 
@@ -44,11 +52,13 @@ def sync_to_hubspot(email, record):
     print(r)
 
 
+# Sansanから名刺データを取得
 def get():
     data = get_cards()
     print(data)
 
 
+# Sansanから名刺データを取得しHubSpotと同期
 def sync():
     data = get_cards()
 

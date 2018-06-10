@@ -30,20 +30,28 @@ def sync_to_hubspot(email, record):
     obj = {
         'properties' : [
             {
-              "property": "lastname",
-              "value": record.get('lastName')
+                "property": "lastname",
+                "value": record.get('lastName')
             },
             {
-              "property": "firstname",
-              "value": record.get('firstName')
+                "property": "firstname",
+                "value": record.get('firstName')
             },
             {
-              "property": "company",
-              "value": record.get('companyName')
+                "property": "company",
+                "value": record.get('companyName')
             },
             {
-              "property": "phone",
-              "value": record.get('tel')
+                "property": "jobtitle",
+                "value": record.get('title')
+            },
+            {
+                "property": "phone",
+                "value": record.get('tel')
+            },
+            {
+                "property": "address",
+                "value": record.get('address')
             }
         ]
     }
